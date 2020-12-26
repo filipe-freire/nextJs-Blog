@@ -12,12 +12,14 @@ export default function Home({ blogs }) {
       <AuthorIntro />
       <hr />
       <Row className="mb-5">
-        <Col md="10">
+        {/* <Col md="10">
           <CardListItem />
-        </Col>
-        <Col md="4">
-          <CardItem />
-        </Col>
+        </Col> */}
+        {blogs.map((blog) => (
+          <Col key={blog.slug} md="4">
+            <CardItem title={blog.title} subtitle={blog.subtitle} />
+          </Col>
+        ))}
       </Row>
     </PageLayout>
   );
@@ -33,3 +35,11 @@ export async function getStaticProps() {
     },
   };
 }
+
+//? Static Page
+// Created at build time
+// When making a req, we receive same html, css, js files
+
+//? Dynamic Page
+// Created at request time
+// Little bit slower, time depends on the data we fetch

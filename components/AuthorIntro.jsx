@@ -4,7 +4,6 @@ const AuthorIntro = () => {
   return (
     <Row>
       <Col md="8">
-        {/* AUTHOR INTRO STARTS */}
         <Media className="mb-4 admin-intro">
           <Image
             roundedCircle
@@ -15,14 +14,13 @@ const AuthorIntro = () => {
             alt="Generic placeholder"
           />
           <Media.Body>
-            <h5 className="font-weight-bold mb-0">Hello Friends,</h5>
+            <h5 className="font-weight-bold mb-0">Hello everyone! 👋 </h5>
             <p className="welcome-text">
-              My name is Filip Jerga and I am an experienced software engineer
-              and freelance developer. and this is my blog page.
+              My name is Filipe Freire and I am a junior web developer. Welcome
+              to my blog!
             </p>
           </Media.Body>
         </Media>
-        {/* AUTHOR INTRO ENDS */}
       </Col>
     </Row>
   );

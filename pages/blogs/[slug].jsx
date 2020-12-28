@@ -1,18 +1,45 @@
 import PageLayout from "components/PageLayout";
+import BlogHeader from "components/BlogHeader";
+import BlogContent from "components/BlogContent";
+import { getBlogBySlug, getAllBlogs } from "lib/api";
+import { Row, Col } from "react-bootstrap";
 // import { useRouter } from "next/router"; // gets query/slug
-import { getBlogBySlug } from "lib/api";
 
 const BlogDetail = ({ blog }) => {
-  const { query } = useRouter();
+  //const { query } = useRouter();
   return (
-    <PageLayout>
-      <h1>Hello Detail Page - {blog.slug}</h1>
+    <PageLayout className="blog-detail-page">
+      <Row>
+        <Col md={{ span: 10, offset: 1 }}>
+          <BlogHeader
+            title={blog.title}
+            subtitle={blog.subtitle}
+            coverImage={blog.coverImage}
+            author={blog.author}
+            date={blog.date}
+          />
+          <hr />
+          {/* Blog Content Here */}
+          <BlogContent content={blog.content} />
+        </Col>
+      </Row>
     </PageLayout>
   );
 };
 
-export async function getServerSideProps({ params }) {
+export async function getStaticProps({ params }) {
   const blog = await getBlogBySlug(params.slug);
+  return {
+    props: { blog },
+  };
+}
+
+export async function getStaticPaths() {
+  const blogs = await getAllBlogs();
+  return {
+    paths: blogs?.map((b) => ({ params: { slug: b.slug } })),
+    fallback: false,
+  };
 }
 
 export default BlogDetail;

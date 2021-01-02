@@ -1,4 +1,7 @@
 dependencies:
+  '@fortawesome/fontawesome-svg-core': 1.2.32
+  '@fortawesome/free-solid-svg-icons': 5.15.1
+  '@fortawesome/react-fontawesome': 0.1.14_8ce9757f921aacb44ae3f15ea31db6bb
   '@sanity/block-content-to-react': 2.0.7_react@17.0.1
   '@sanity/client': 2.1.0
   '@sanity/image-url': 0.140.19
@@ -98,6 +101,42 @@ packages:
     dev: false
     resolution:
       integrity: sha512-jBD+G8+LWpMBBWvVcdr4QysjUE4mU/syrhN17o1u3gx0/WzJB1kwiVZAXRtWbsIPOwW8pF/YJV5+nmetPzepXg==
+  /@fortawesome/fontawesome-common-types/0.2.32:
+    dev: false
+    engines:
+      node: '>=6'
+    requiresBuild: true
+    resolution:
+      integrity: sha512-ux2EDjKMpcdHBVLi/eWZynnPxs0BtFVXJkgHIxXRl+9ZFaHPvYamAfCzeeQFqHRjuJtX90wVnMRaMQAAlctz3w==
+  /@fortawesome/fontawesome-svg-core/1.2.32:
+    dependencies:
+      '@fortawesome/fontawesome-common-types': 0.2.32
+    dev: false
+    engines:
+      node: '>=6'
+    requiresBuild: true
+    resolution:
+      integrity: sha512-XjqyeLCsR/c/usUpdWcOdVtWFVjPbDFBTQkn2fQRrWhhUoxriQohO2RWDxLyUM8XpD+Zzg5xwJ8gqTYGDLeGaQ==
+  /@fortawesome/free-solid-svg-icons/5.15.1:
+    dependencies:
+      '@fortawesome/fontawesome-common-types': 0.2.32
+    dev: false
+    engines:
+      node: '>=6'
+    requiresBuild: true
+    resolution:
+      integrity: sha512-EFMuKtzRMNbvjab/SvJBaOOpaqJfdSap/Nl6hst7CgrJxwfORR1drdTV6q1Ib/JVzq4xObdTDcT6sqTaXMqfdg==
+  /@fortawesome/react-fontawesome/0.1.14_8ce9757f921aacb44ae3f15ea31db6bb:
+    dependencies:
+      '@fortawesome/fontawesome-svg-core': 1.2.32
+      prop-types: 15.7.2
+      react: 17.0.1
+    dev: false
+    peerDependencies:
+      '@fortawesome/fontawesome-svg-core': ^1.2.32
+      react: '>=16.x'
+    resolution:
+      integrity: sha512-4wqNb0gRLVaBm/h+lGe8UfPPivcbuJ6ecI4hIgW0LjI7kzpYB9FkN0L9apbVzg+lsBdcTf0AlBtODjcSX5mmKA==
   /@hapi/accept/5.0.1:
     dependencies:
       '@hapi/boom': 9.1.1
@@ -4538,6 +4577,9 @@ packages:
     resolution:
       integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 specifiers:
+  '@fortawesome/fontawesome-svg-core': ^1.2.32
+  '@fortawesome/free-solid-svg-icons': ^5.15.1
+  '@fortawesome/react-fontawesome': ^0.1.14
   '@sanity/block-content-to-react': ^2.0.7
   '@sanity/client': ^2.1.0
   '@sanity/image-url': ^0.140.19

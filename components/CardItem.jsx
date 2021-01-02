@@ -23,7 +23,12 @@ const CardItem = ({ title, subtitle, date, image, author, link }) => {
         </Card.Header>
         <div className="view overlay">
           <Card.Img
-            src={urlFor(image).height(200).url()} //100 is blurry; 200-300 is top
+            src={urlFor(image)
+              .height(200)
+              .crop("center") // in order to display the img in a fit to border
+              .fit("clip") // in order to display the img in a fit to border
+              .url()
+            } //100 is blurry; 200-300 is top
             alt="Card image cap"
           />
         </div>

@@ -1,4 +1,4 @@
-import { Row, Col, Media, Image } from "react-bootstrap";
+import { Row, Col, Media, Image } from 'react-bootstrap';
 
 const AuthorIntro = () => {
   return (
@@ -10,14 +10,13 @@ const AuthorIntro = () => {
             width={64}
             height={64}
             className="mr-3"
-            src="https://avatars1.githubusercontent.com/u/9482724?s=460&u=69a6acab13fd5547a4e316e496b573271077147f&v=4"
+            src="https://ih-public-production-student-card.s3-eu-west-1.amazonaws.com/student-profile-images/2020504330-2.jfif"
             alt="Generic placeholder"
           />
           <Media.Body>
             <h5 className="font-weight-bold mb-0">Hello everyone! 👋 </h5>
             <p className="welcome-text">
-              My name is Filipe Freire and I am a junior web developer. Welcome
-              to my blog!
+              My name is Filipe Freire and I am a junior web developer. Welcome to my blog!
             </p>
           </Media.Body>
         </Media>

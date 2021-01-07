@@ -7,13 +7,20 @@ import CardListItem from 'components/CardListItem';
 import FilteringMenu from 'components/FilteringMenu';
 
 import { getAllBlogs } from 'lib/api';
+import { useGetBlogs } from 'actions';
 
-export default function Home({ blogs }) {
+export default function Home({ blogs: initialData }) {
   const [filter, setFilter] = useState({
     view: {
       list: 0
     }
   });
+
+  const { data: blogs, error } = useGetBlogs(initialData);
+  // if (!blogsData) {
+  //   return 'Loading...';
+  // }
+
   return (
     <PageLayout>
       <AuthorIntro />
@@ -25,9 +32,6 @@ export default function Home({ blogs }) {
       />
       <hr />
       <Row className="mb-5">
-        {/* <Col md="10">
-          <CardListItem />
-        </Col> */}
         {blogs.map(blog =>
           filter.view.list ? (
             <Col key={`${blog.slug}-list`} md="9">
@@ -66,7 +70,7 @@ export default function Home({ blogs }) {
 // Called during build time! Always on the server
 // Provides props to my page & creates static page
 export async function getStaticProps() {
-  const blogs = await getAllBlogs();
+  const blogs = await getAllBlogs({ offset: 3 }); // takes care of pagination: if offset 0 -> blogs from 0 to 3, and so on..
   return {
     props: {
       blogs

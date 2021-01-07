@@ -31,7 +31,16 @@ export default function Home({ blogs }) {
         {blogs.map(blog =>
           filter.view.list ? (
             <Col key={`${blog.slug}-list`} md="9">
-              <CardListItem />
+              <CardListItem
+                title={blog.title}
+                subtitle={blog.subtitle}
+                date={blog.date}
+                author={blog.author}
+                slug={blog.slug}
+                link={{
+                  href: `/blogs/${blog.slug}`
+                }}
+              />
             </Col>
           ) : (
             <Col key={blog.slug} md="4">

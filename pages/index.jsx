@@ -1,25 +1,23 @@
 import { useState } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Button } from 'react-bootstrap';
 import PageLayout from 'components/PageLayout';
 import AuthorIntro from 'components/AuthorIntro';
-import CardItem from 'components/CardItem';
-import CardListItem from 'components/CardListItem';
 import FilteringMenu from 'components/FilteringMenu';
 
+import { useGetBlogsPages } from 'actions/pagination';
 import { getAllBlogs } from 'lib/api';
-import { useGetBlogs } from 'actions';
 
-export default function Home({ blogs: initialData }) {
+export default function Home({ blogs }) {
   const [filter, setFilter] = useState({
-    view: {
-      list: 0
-    }
+    view: { list: 0 },
+    date: { asc: 0 }
   });
 
-  const { data: blogs, error } = useGetBlogs(initialData);
-  // if (!blogsData) {
-  //   return 'Loading...';
-  // }
+  // loadMore: to load more data
+  // isLoadingMore: is true whenever we are making a request to fetch data
+  // isLoadingMore: is true when we loaded all data
+
+  const { pages, isLoadingMore, isReachingEnd, loadMore } = useGetBlogsPages({ blogs, filter });
 
   return (
     <PageLayout>
@@ -31,38 +29,17 @@ export default function Home({ blogs: initialData }) {
         }}
       />
       <hr />
-      <Row className="mb-5">
-        {blogs.map(blog =>
-          filter.view.list ? (
-            <Col key={`${blog.slug}-list`} md="9">
-              <CardListItem
-                title={blog.title}
-                subtitle={blog.subtitle}
-                date={blog.date}
-                author={blog.author}
-                slug={blog.slug}
-                link={{
-                  href: `/blogs/${blog.slug}`
-                }}
-              />
-            </Col>
-          ) : (
-            <Col key={blog.slug} md="4">
-              <CardItem
-                title={blog.title}
-                subtitle={blog.subtitle}
-                date={blog.date}
-                author={blog.author}
-                image={blog.coverImage}
-                slug={blog.slug}
-                link={{
-                  href: `/blogs/${blog.slug}`
-                }}
-              />
-            </Col>
-          )
-        )}
-      </Row>
+      <Row className="mb-5">{pages}</Row>
+      <div style={{ textAlign: 'center' }}>
+        <Button
+          onClick={loadMore}
+          disabled={isReachingEnd || isLoadingMore}
+          size="lg"
+          variant="outline-secondary"
+        >
+          {isLoadingMore ? '...' : isReachingEnd ? 'No More Blogs' : 'More Blogs'}
+        </Button>
+      </div>
     </PageLayout>
   );
 }
@@ -70,7 +47,7 @@ export default function Home({ blogs: initialData }) {
 // Called during build time! Always on the server
 // Provides props to my page & creates static page
 export async function getStaticProps() {
-  const blogs = await getAllBlogs({ offset: 3 }); // takes care of pagination: if offset 0 -> blogs from 0 to 3, and so on..
+  const blogs = await getAllBlogs({ offset: 0, date: 'desc' }); // takes care of pagination: if offset 0 -> blogs from 0 to 3, and so on..
   return {
     props: {
       blogs

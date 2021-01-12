@@ -4,6 +4,7 @@ import { useGetBlogs } from 'actions';
 import CardItem from 'components/CardItem';
 import CardItemBlank from 'components/CardItemBlank';
 import CardListItem from 'components/CardListItem';
+import CardListItemBlank from 'components/CardListItemBlank';
 import { Col } from 'react-bootstrap';
 
 export const useGetBlogsPages = ({ blogs, filter }) => {
@@ -25,11 +26,17 @@ export const useGetBlogsPages = ({ blogs, filter }) => {
       if (!paginatedBlogs) {
         return Array(3)
           .fill(0)
-          .map((_, i) => (
-            <Col key={i} md="4">
-              <CardItemBlank />;
-            </Col>
-          ));
+          .map((_, i) =>
+            filter.view.list ? (
+              <Col key={i} md="9">
+                <CardListItemBlank />;
+              </Col>
+            ) : (
+              <Col key={`${i}-item`} md="4">
+                <CardItemBlank />;
+              </Col>
+            )
+          );
       }
 
       return paginatedBlogs.map(blog =>
@@ -68,7 +75,10 @@ export const useGetBlogsPages = ({ blogs, filter }) => {
     // index: number of the current paginated page
     (SWR, index) => {
       if (SWR.data && SWR.data.length === 0) return null;
-      return (index + 1) * 3;
+      // the number 6 here is the amount of blogs loaded in the homepage
+      // we have to change hte lib/api.js offset as well if we change
+      // the number here!
+      return (index + 1) * 6;
     },
     [filter]
   );

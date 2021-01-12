@@ -7,6 +7,7 @@ dependencies:
   '@sanity/image-url': 0.140.19
   bootstrap: 4.5.0
   highlight.js: 10.5.0
+  moment: 2.29.1
   next: 10.0.4_9f7287c92d0b9adaf60d5938c61b533f
   react: 17.0.1
   react-bootstrap: 1.0.1_react-dom@17.0.1+react@17.0.1
@@ -2716,6 +2717,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==
+  /moment/2.29.1:
+    dev: false
+    resolution:
+      integrity: sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
   /move-concurrently/1.0.1:
     dependencies:
       aproba: 1.2.0
@@ -4598,6 +4603,7 @@ specifiers:
   '@sanity/image-url': ^0.140.19
   bootstrap: 4.5.0
   highlight.js: 10.5.0
+  moment: ^2.29.1
   next: 10.0.4
   react: 17.0.1
   react-bootstrap: 1.0.1

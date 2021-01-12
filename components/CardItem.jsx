@@ -1,6 +1,7 @@
 import { Card } from 'react-bootstrap';
 import Link from 'next/link';
 import { urlFor } from 'lib/api';
+import moment from 'moment';
 
 const CardItem = ({ title, subtitle, date, image, author, link, mode = 'normal' }) => {
   return (
@@ -25,7 +26,7 @@ const CardItem = ({ title, subtitle, date, image, author, link, mode = 'normal' 
                 <Card.Title className="font-weight-bold mb-1">
                   {author?.name || 'An Amazing Author'}
                 </Card.Title>
-                <Card.Text className="card-date">{date}</Card.Text>
+                <Card.Text className="card-date">{moment(date).format('LL')}</Card.Text>
               </>
             )}
           </div>
@@ -33,7 +34,7 @@ const CardItem = ({ title, subtitle, date, image, author, link, mode = 'normal' 
         <div className="view overlay">
           {mode === 'placeholder' ? (
             <div className="imageplaceholder" />
-          ) : (
+          ) : image ? (
             <Card.Img
               src={urlFor(image)
                 .height(200)
@@ -42,6 +43,13 @@ const CardItem = ({ title, subtitle, date, image, author, link, mode = 'normal' 
                 .url()} //100 is blurry; 200-300 is top
               alt="Card image cap"
             />
+          ) : (
+            <div>
+              <img
+                width="100%"
+                src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              />
+            </div>
           )}
         </div>
         <Card.Body>

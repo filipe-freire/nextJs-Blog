@@ -1,11 +1,12 @@
 import { useState } from 'react';
+
 import { Row, Button } from 'react-bootstrap';
 import PageLayout from 'components/PageLayout';
 import AuthorIntro from 'components/AuthorIntro';
 import FilteringMenu from 'components/FilteringMenu';
 
 import { useGetBlogsPages } from 'actions/pagination';
-import { getAllBlogs } from 'lib/api';
+import { getPaginatedBlogs } from 'lib/api';
 
 export default function Home({ blogs }) {
   const [filter, setFilter] = useState({
@@ -47,7 +48,7 @@ export default function Home({ blogs }) {
 // Called during build time! Always on the server
 // Provides props to my page & creates static page
 export async function getStaticProps() {
-  const blogs = await getAllBlogs({ offset: 0, date: 'desc' }); // takes care of pagination: if offset 0 -> blogs from 0 to 3, and so on..
+  const blogs = await getPaginatedBlogs({ offset: 0, date: 'desc' }); // takes care of pagination: if offset 0 -> blogs from 0 to 3, and so on..
   return {
     props: {
       blogs

@@ -238,16 +238,18 @@ body {
   &-left {
     float: left;
     margin-left: 30px;
+    max-width: 50%;
   }
 
   &-right {
     float: right;
     margin-right: 30px;
+    max-width: 50%;
   }
 
-  // > img {
-  //   width: 100%;
-  // }
+  > img {
+    max-width: 100%;
+  }
 }
 .image-alt {
   margin-top: 3px;

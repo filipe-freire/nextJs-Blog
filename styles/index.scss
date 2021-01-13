@@ -52,6 +52,7 @@ body {
 
   .card-main-title {
     font-size: 22px;
+    height: 60px;
   }
 
   .card-header {
@@ -243,6 +244,10 @@ body {
     float: right;
     margin-right: 30px;
   }
+
+  // > img {
+  //   width: 100%;
+  // }
 }
 .image-alt {
   margin-top: 3px;
@@ -393,4 +398,32 @@ body {
       }
     }
   }
+}
+
+.view.overlay {
+  height: 180px;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  margin: 0;
+  width: 100%;
+
+  > img {
+    object-fit: cover;
+    height: 100%;
+  }
+}
+
+blockquote {
+  position: relative;
+  color: #999;
+  font-size: 1.25em;
+  font-family: Georgia, Times New Roman, Times, serif;
+  font-style: italic;
+  margin: 0;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-origin: border-box;
+  background-size: 2em;
 }

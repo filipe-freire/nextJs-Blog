@@ -12,6 +12,7 @@ dependencies:
   react: 17.0.1
   react-bootstrap: 1.0.1_react-dom@17.0.1+react@17.0.1
   react-dom: 17.0.1_react@17.0.1
+  react-toggle: 4.1.1_react-dom@17.0.1+react@17.0.1
   sass: 1.30.0
   swr: 0.2.2_react@17.0.1
 lockfileVersion: 5.2
@@ -3487,6 +3488,18 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
+  /react-toggle/4.1.1_react-dom@17.0.1+react@17.0.1:
+    dependencies:
+      classnames: 2.2.6
+      react: 17.0.1
+      react-dom: 17.0.1_react@17.0.1
+    dev: false
+    peerDependencies:
+      prop-types: ^15.3.0 || ^16.0.0
+      react: ^15.3.0 || ^16.0.0
+      react-dom: ^15.3.0 || ^16.0.0
+    resolution:
+      integrity: sha512-+wXlMcSpg8SmnIXauMaZiKpR+r2wp2gMUteroejp2UTSqGTVvZLN+m9EhMzFARBKEw7KpQOwzCyfzeHeAndQGw==
   /react-transition-group/4.4.1_react-dom@17.0.1+react@17.0.1:
     dependencies:
       '@babel/runtime': 7.12.5
@@ -4608,5 +4621,6 @@ specifiers:
   react: 17.0.1
   react-bootstrap: 1.0.1
   react-dom: 17.0.1
+  react-toggle: ^4.1.1
   sass: ^1.30.0
   swr: 0.2.2

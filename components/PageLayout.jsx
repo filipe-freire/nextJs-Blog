@@ -15,6 +15,7 @@ const PageLayout = ({ children, className }) => {
           href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;900&display=swap"
           rel="stylesheet"
         />
+        <title>Filipe Freire - Web Development</title>
       </Head>
       <Container>
         <BlogNavbar theme={theme} toggleTheme={toggleTheme} />

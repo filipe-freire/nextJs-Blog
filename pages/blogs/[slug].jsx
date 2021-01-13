@@ -1,6 +1,7 @@
 import PageLayout from 'components/PageLayout';
 import BlogHeader from 'components/BlogHeader';
 import BlogContent from 'components/BlogContent';
+import PreviewAlert from 'components/PreviewAlert';
 import ErrorPage from 'next/error';
 import { getBlogBySlug, getAllBlogs } from 'lib/api';
 import { Row, Col } from 'react-bootstrap';
@@ -9,7 +10,7 @@ import moment from 'moment';
 import { useRouter } from 'next/router';
 // import { useRouter } from "next/router"; // gets query/slug
 
-const BlogDetail = ({ blog }) => {
+const BlogDetail = ({ blog, preview }) => {
   //const { query } = useRouter();
   const router = useRouter();
 
@@ -27,6 +28,7 @@ const BlogDetail = ({ blog }) => {
     <PageLayout className="blog-detail-page">
       <Row>
         <Col md={{ span: 10, offset: 1 }}>
+          {preview && <PreviewAlert />}
           <BlogHeader
             title={blog.title}
             subtitle={blog.subtitle}
@@ -43,14 +45,13 @@ const BlogDetail = ({ blog }) => {
   );
 };
 
-export async function getStaticProps({ params }) {
-  const blog = await getBlogBySlug(params.slug);
+export async function getStaticProps({ params, preview = false, previewData }) {
+  const blog = await getBlogBySlug(params.slug, preview);
   return {
-    props: { blog }
+    props: { blog, preview }
   };
 }
 
-//TODO: Introduce Fallback
 export async function getStaticPaths() {
   const blogs = await getAllBlogs();
   const paths = blogs?.map(b => ({ params: { slug: b.slug } }));

@@ -1,3 +1,4 @@
+import ThemeProvider from 'providers/ThemeProvider';
 import { library, config } from '@fortawesome/fontawesome-svg-core';
 import {
   faBorderAll,
@@ -14,5 +15,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'highlight.js/styles/ir-black.css'; // highlight.js/static/demo
 import 'styles/index.scss';
 
-const App = ({ Component, pageProps }) => <Component {...pageProps} />;
-export default App;
+export default ({ Component, pageProps }) => (
+  <ThemeProvider>
+    <Component {...pageProps} />
+  </ThemeProvider>
+);
+
+// const App = ({ Component, pageProps }) => (
+//   <ThemeProvider>
+//     <Component {...pageProps} />;
+//   </ThemeProvider>
+// );
+// export default App;

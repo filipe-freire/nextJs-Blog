@@ -1,9 +1,9 @@
 import { Navbar, Nav } from 'react-bootstrap';
 import Link from 'next/link';
 
-const BlogNavbar = () => {
+const BlogNavbar = ({ theme, toggleTheme }) => {
   return (
-    <Navbar className="fj-navbar fj-nav-base" bg="transparent" expand="lg">
+    <Navbar variant={theme.type} className="fj-navbar fj-nav-base" bg="transparent" expand="lg">
       <Navbar.Brand className="fj-navbar-brand">
         <Link href="/">
           <a>Filipe Freire</a>
@@ -15,6 +15,9 @@ const BlogNavbar = () => {
           <Link href="/">
             <a className="fj-navbar-item fj-navbar-link">Home</a>
           </Link>
+          <button className="btn btn-success" onClick={toggleTheme}>
+            {theme.type}
+          </button>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
